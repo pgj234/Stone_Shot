@@ -2,6 +2,8 @@
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] AIManager aiManager;
+
     static public GameManager instance;
 
     void Awake()
@@ -34,6 +36,16 @@ public class GameManager : MonoBehaviour
     internal void TurnChange()
     {
         isPlayerTurn = !isPlayerTurn;
+
+        // AI 턴
+        if (false == isPlayerTurn)
+        {
+            aiManager.TurnStartAI();
+        }
+        else        // 플레이어 턴
+        {
+        
+        }
     }
 
     /// <summary>
