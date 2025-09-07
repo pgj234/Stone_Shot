@@ -42,6 +42,8 @@ public class UnitSystem : MonoBehaviour
 
     public void AddImpulse(Vector2 _impulse)
     {
+        Debug.Log(gameObject.name + " 발사 / 속도 : " + _impulse.magnitude);
+
         rb.AddForce(_impulse, ForceMode2D.Impulse);
     }
 

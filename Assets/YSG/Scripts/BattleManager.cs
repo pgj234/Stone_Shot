@@ -106,6 +106,8 @@ public class BattleManager : MonoBehaviour
 
     private void EndDrag(Vector2 _screenPos)
     {
+        if (selected != null) selected.SetSelected(false);
+
         if (!isDragging) return;
 
         Vector2 endWorld = ScreenToWorld(_screenPos);
@@ -118,10 +120,11 @@ public class BattleManager : MonoBehaviour
         if (selected != null)
         {
             Vector2 impulse = shotDir.normalized * dist * power;
+
+            if (impulse.magnitude == 0) return;
+
             selected.AddImpulse(impulse);
         }
-
-        if (selected != null) selected.SetSelected(false);
 
         isDragging = false;
         selected = null;
