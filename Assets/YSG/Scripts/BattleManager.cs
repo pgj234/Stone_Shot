@@ -3,8 +3,8 @@ using UnityEngine.EventSystems;
 
 public class BattleManager : MonoBehaviour
 {
-    public Camera cam;
-    public LineRenderer aimLine;
+    public Camera cam => Camera.main;
+    public LineRenderer aimLine => GetComponent<LineRenderer>();
     public LayerMask unitLayer;
 
     public float power = 5f;
@@ -16,9 +16,6 @@ public class BattleManager : MonoBehaviour
 
     private void Awake()
     {
-        if (cam == null) cam = Camera.main;
-        if (aimLine == null) aimLine = GetComponent<LineRenderer>();
-
         if (aimLine != null)
         {
             aimLine.positionCount = 2;
@@ -33,7 +30,7 @@ public class BattleManager : MonoBehaviour
 
     private void Update()
     {
-        if (!GameManager.instance.PlayerTurnCheck()) return;
+        //if (!GameManager.instance.PlayerTurnCheck()) return;
 
 #if UNITY_EDITOR
         HandleMouse();
@@ -71,7 +68,8 @@ public class BattleManager : MonoBehaviour
 
     private bool CanSelect(UnitSystem _unit)
     {
-        if (_unit == null || !_unit.CompareTag("Player")) return false;
+        //if (_unit == null || !_unit.CompareTag("Player")) return false;
+        if (_unit == null) return false;
 
         var rb = _unit.GetComponent<Rigidbody2D>();
         return rb != null && rb.linearVelocity.sqrMagnitude <= 0.01f;
