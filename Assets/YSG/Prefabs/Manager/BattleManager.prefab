@@ -156,6 +156,6 @@ MonoBehaviour:
   aimLine: {fileID: 0}
   unitLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 256
   power: 5
   powerRange: {x: 0.1, y: 3}

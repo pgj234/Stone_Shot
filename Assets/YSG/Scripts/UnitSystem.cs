@@ -52,4 +52,9 @@ public class UnitSystem : MonoBehaviour
         if (sr == null) return;
         sr.color = _selected ? Color.red : originalColor;
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Map")) Destroy(gameObject);
+    }
 }
